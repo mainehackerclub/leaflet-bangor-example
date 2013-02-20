@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Leaflet</title>
+
+    <!-- Leaflet requirements -->
+    <link href='http://cdn.leafletjs.com/leaflet-0.5/leaflet.css' rel='stylesheet'/>
+    <script src='http://cdn.leafletjs.com/leaflet-0.5/leaflet.js'></script>
+
+    <!-- Load the data -->
+    <script src='data/streams.js'></script>
+
+  </head>
+
+  <body>
+
+    <style>
+      body {
+        width: 50%;
+        margin: 0 auto;
+        margin-top: 5em;
+      }
+      #map {
+        height: 500px;
+      }
+    </style>
+
+    <div id='map'></div>
+
+    <script>
+
+      // initialize a map in the `map` div, and set the view and zoom, brah
+      var map = L.map('map').setView([44.80, -68.77], 12);
+
+      // add an OSM baselayer, brah
+      L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
+
+      // add our GeoJSON layer, brah
+      L.geoJson(streams).addTo(map);
+
+    </script>
+
+  </body>
+</html>
+    
