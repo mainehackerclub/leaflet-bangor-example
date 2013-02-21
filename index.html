@@ -10,6 +10,7 @@
 
     <!-- Load the data -->
     <script src='data/streams.js'></script>
+    <script src='data/buildings.js'></script>
 
   </head>
 
@@ -23,21 +24,32 @@
       }
       #map {
         height: 500px;
+        width: 800px;
       }
     </style>
 
     <div id='map'></div>
 
     <script>
+      
 
       // initialize a map in the `map` div, and set the view and zoom, brah
-      var map = L.map('map').setView([44.80, -68.77], 12);
+      var map = L.map('map').setView([44.80, -68.77], 15);
 
       // add an OSM baselayer, brah
       L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png').addTo(map);
 
-      // add our GeoJSON layer, brah
+      // add our streams GeoJSON layer, brah
       L.geoJson(streams).addTo(map);
+
+      // Style our GeoJSON buildings layer, brah
+      var buildStyle = {
+            "color": "#ff7800",
+            "weight": .5,
+            "opacity": 0.75
+          }
+      // add our GeoJSON buildings layer, brah
+      L.geoJson(buildings,{style:buildStyle}).addTo(map);
 
     </script>
 
